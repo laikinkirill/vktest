@@ -5,7 +5,7 @@ class ApiService {
 
   async createName(name) {
     try {
-      const request = new Request(this.url, {
+      const request = new Request(this.url + ".json", {
         method: "post",
         body: JSON.stringify(name),
       });
