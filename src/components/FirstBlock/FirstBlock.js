@@ -23,7 +23,7 @@ function FirstBlock() {
     );
 
   return (
-    <div className={styles.FirstBlock}>
+    <>
       <textarea
         className={styles.factInfo}
         value={fact}
@@ -33,7 +33,7 @@ function FirstBlock() {
       <button className={styles.button} onClick={getFact}>
         Find fact
       </button>
-    </div>
+    </>
   );
 }
 
