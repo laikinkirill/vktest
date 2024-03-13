@@ -30,7 +30,6 @@ function FirstBlock() {
         ref={(ref) => ref && ref.focus()}
         onFocus={focusHandler}
         placeholder="Some text..."
-        readonly
       />
       <Button onClick={getFact} value="Find fact" />
     </>
