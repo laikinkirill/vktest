@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import styles from "./FirstBlock.module.scss";
+import Button from "../../components/Button/Button";
 
 function FirstBlock() {
-  const [fact, setFact] = useState("Some text...");
+  const [fact, setFact] = useState("");
 
-  const getFact = () => {
+  const getFact = (event) => {
+    event.preventDefault();
     fetch("https://catfact.ninja/fact")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        console.log(data.fact);
         setFact(data.fact);
       });
   };
@@ -18,8 +19,7 @@ function FirstBlock() {
   const focusHandler = (e) =>
     e.currentTarget.setSelectionRange(
       e.currentTarget.value.split(" ")[0].length,
-      e.currentTarget.value.split(" ")[0].length,
-      console.log(e.currentTarget.value.split(" ")[0])
+      e.currentTarget.value.split(" ")[0].length
     );
 
   return (
@@ -29,10 +29,10 @@ function FirstBlock() {
         value={fact}
         ref={(ref) => ref && ref.focus()}
         onFocus={focusHandler}
+        placeholder="Some text..."
+        readonly
       />
-      <button className={styles.button} onClick={getFact}>
-        Find fact
-      </button>
+      <Button onClick={getFact} value="Find fact" />
     </>
   );
 }
